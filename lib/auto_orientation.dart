@@ -3,10 +3,10 @@ import 'package:flutter/services.dart';
 // Class that provides different modes
 // to rotate the device programmatically either landscape or portrait
 class AutoOrientation {
-  static const MethodChannel _channel = const MethodChannel('auto_orientation');
+  static const MethodChannel _channel = MethodChannel('auto_orientation');
 
   // rotate the device to landscape left mode
-  static landscapeLeftMode() async {
+  static Future<void> landscapeLeftMode() async {
     try {
       await _channel.invokeMethod('setLandscapeLeft');
     } on MissingPluginException catch (_) {
@@ -15,7 +15,7 @@ class AutoOrientation {
   }
 
   // rotate the device to landscape right mode
-  static landscapeRightMode() async {
+  static Future<void> landscapeRightMode() async {
     try {
       await _channel.invokeMethod('setLandscapeRight');
     } on MissingPluginException catch (_) {
@@ -24,7 +24,7 @@ class AutoOrientation {
   }
 
   // rotate the device to portrait up mode
-  static portraitUpMode() async {
+  static Future<void> portraitUpMode() async {
     try {
       await _channel.invokeMethod('setPortraitUp');
     } on MissingPluginException catch (_) {
@@ -33,7 +33,7 @@ class AutoOrientation {
   }
 
   // rotate the device to portrait down mode
-  static portraitDownMode() async {
+  static Future<void> portraitDownMode() async {
     try {
       await _channel.invokeMethod('setPortraitDown');
     } on MissingPluginException catch (_) {
@@ -42,7 +42,7 @@ class AutoOrientation {
   }
 
   // rotate the device to portrait auto mode
-  static portraitAutoMode({bool forceSensor = false}) async {
+  static Future<void> portraitAutoMode({bool forceSensor = false}) async {
     try {
       await _channel
           .invokeMethod('setPortraitAuto', {'forceSensor': forceSensor});
@@ -52,7 +52,7 @@ class AutoOrientation {
   }
 
   // rotate the device to landscape auto mode
-  static landscapeAutoMode({bool forceSensor = false}) async {
+  static Future<void> landscapeAutoMode({bool forceSensor = false}) async {
     try {
       await _channel
           .invokeMethod('setLandscapeAuto', {'forceSensor': forceSensor});
@@ -62,7 +62,7 @@ class AutoOrientation {
   }
 
   // rotate the device to landscape auto mode
-  static fullAutoMode({bool forceSensor = false}) async {
+  static Future<void> fullAutoMode({bool forceSensor = false}) async {
     try {
       await _channel.invokeMethod('setAuto', {'forceSensor': forceSensor});
     } on MissingPluginException catch (_) {
@@ -70,7 +70,7 @@ class AutoOrientation {
     }
   }
 
-  static setScreenOrientationUser() async {
+  static Future<void> setScreenOrientationUser() async {
     try {
       await _channel.invokeMethod('setScreenOrientationUser');
     } on MissingPluginException catch (_) {
